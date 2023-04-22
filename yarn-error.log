@@ -1,0 +1,56 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\Junaid Younas\.node\corepack\yarn\1.22.15\bin\yarn.js init
+
+PATH: 
+  C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Junaid Younas\bin;C:\Program Files (x86)\VMware\VMware Workstation\bin;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64_win\compiler;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\ia32_win\compiler;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0;C:\windows\System32\OpenSSH;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\xampp\php;C:\Program Files\Git\cmd;C:\Users\Junaid Younas\AppData\Local\Android\Sdk\platform-tools;C:\Program Files\MongoDB\Server\4.4\bin;C:\Ruby30-x64\bin;C:\Program Files\PuTTY;C:\Program Files\dotnet;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Java\jdk-15.0.2\bi;%M2_HOME%\bin;C:\WINDOWS\system32;.;C:\Users\DefinedCrowd\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\maven\bin;C:\Program Files\nodejs;C:\Ruby30-x64\bin;C:\Users\Junaid Younas\AppData\Local\Programs\Python\Python38\Scripts;C:\Users\Junaid Younas\AppData\Local\Programs\Python\Python38;C:\Users\Junaid Younas\AppData\Local\Microsoft\WindowsApps;C:\Program Files\heroku\bin;C:\Users\Junaid Younas\AppData\Local\GitHubDesktop\bin;C:\Users\Junaid Younas\AppData\Local\Android\Sdk\platform-tools;C:\Users\Junaid Younas\.dotnet\tools;C:\Users\Junaid Younas\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Junaid Younas\AppData\Local\Programs\Microsoft VS Code Insiders\bin;C:\Users\Junaid Younas\AppData\Roaming\npm
+
+Yarn version: 
+  1.22.15
+
+Node version: 
+  18.14.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: canceled
+      at Interface.<anonymous> (C:\Users\Junaid Younas\.node\corepack\yarn\1.22.15\lib\cli.js:137145:13)
+      at Interface.emit (node:events:513:28)
+      at [_ttyWrite] [as _ttyWrite] (node:internal/readline/interface:1130:18)
+      at ReadStream.onkeypress (node:internal/readline/interface:270:20)
+      at ReadStream.emit (node:events:513:28)
+      at emitKeys (node:internal/readline/utils:357:14)
+      at emitKeys.next (<anonymous>)
+      at ReadStream.onData (node:internal/readline/emitKeypressEvents:64:36)
+      at ReadStream.emit (node:events:513:28)
+      at addChunk (node:internal/streams/readable:324:12)
+
+npm manifest: 
+  {
+    "name": "slappfirebase",
+    "version": "1.0.0",
+    "main": "node_modules/expo/AppEntry.js",
+    "scripts": {
+      "start": "expo start",
+      "android": "expo start --android",
+      "ios": "expo start --ios",
+      "web": "expo start --web"
+    },
+    "dependencies": {
+      "expo": "~48.0.11",
+      "expo-status-bar": "~1.4.4",
+      "react": "18.2.0",
+      "react-native": "0.71.6"
+    },
+    "devDependencies": {
+      "@babel/core": "^7.20.0"
+    },
+    "private": true
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

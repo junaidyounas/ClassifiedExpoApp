@@ -42,7 +42,7 @@ const LoginScreen = (props: Props) => {
           <Pressable onPress={() => setIsSecure(!isSecure)} pr={3}>
                <MaterialCommunityIcons
                     name={isSecure ? "eye" : "eye-off"}
-                    size={fontSizes["3xl"]}
+                    size={fontSizes["xl"]}
                     color={colors.richBlack}
                     ml={6}
                />
@@ -51,7 +51,7 @@ const LoginScreen = (props: Props) => {
      const LeftFacebookIcon = (
           <MaterialCommunityIcons
                name={"facebook"}
-               size={fontSizes["3xl"]}
+               size={fontSizes["xl"]}
                color={colors.white}
                ml={6}
           />
@@ -59,7 +59,7 @@ const LoginScreen = (props: Props) => {
      const LeftAppleIcon = (
           <MaterialCommunityIcons
                name={"apple"}
-               size={fontSizes["3xl"]}
+               size={fontSizes["xl"]}
                color={colors.white}
                ml={6}
           />
@@ -67,7 +67,7 @@ const LoginScreen = (props: Props) => {
      const LeftGoogleIcon = (
           <MaterialCommunityIcons
                name={"google"}
-               size={fontSizes["3xl"]}
+               size={fontSizes["xl"]}
                color={colors.white}
                ml={6}
           />
@@ -97,7 +97,7 @@ const LoginScreen = (props: Props) => {
                          placeHolder={ln("enterpassword")}
                     />
                     <BaseText
-                         fontSize={fontSizes.sm}
+                         fontSize={fontSizes.xs}
                          fontFamily={fonts.semiBold}
                          marginTop={2}
                          textAlign="right"
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
           flex: 1,
      },
      textOr: {
-          fontSize: fontSizes.sm,
+          fontSize: fontSizes.xs,
           fontFamily: fonts.medium,
           marginTop: heightRatio(3),
           marginBottom: heightRatio(1),

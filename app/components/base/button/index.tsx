@@ -20,7 +20,7 @@ type Props = {
 const BaseButton = (props: Props) => {
      const {
           marginTop = 0,
-          height = 7,
+          height = 6,
           backgroundColor = colors.blue,
           text,
           leftIcon,
@@ -39,14 +39,8 @@ const BaseButton = (props: Props) => {
                {...props}
           >
                <BaseText
-                    _dark={{
-                         color: colors.white,
-                    }}
-                    _light={{
-                         color: colors.white,
-                    }}
                     fontFamily={fonts.medium}
-                    color={textColor}
+                    fixColor={textColor}
                     fontSize={fontSizes.sm}
                >
                     {text}

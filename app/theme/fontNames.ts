@@ -4,5 +4,6 @@ export const fonts = {
      semiBold: "semiBold",
      extraBold: "extraBold",
      light: "light",
+     extraLight: "extraLight",
      medium: "medium",
 };

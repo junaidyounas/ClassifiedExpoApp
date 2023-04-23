@@ -7,6 +7,7 @@ export const loadFonts = async () => {
          extraBold: require("./Montserrat-ExtraBold.ttf"),
          regular: require("./Montserrat-Regular.ttf"),
          light: require("./Montserrat-Thin.ttf"),
+         extraLight: require("./Montserrat-ExtraLight.ttf"),
          medium: require("./Montserrat-Medium.ttf"),
     });
   }

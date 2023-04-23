@@ -2,12 +2,20 @@
      "welcomeback": "Welcome back",
      "enteremail": "Enter your email",
      "enterpassword": "Enter your password",
+     "entername": "Enter your name",
      "email": "E-mail",
      "password": "Password",
-     "login": "Login",
+     "login": "Log In",
      "continuewithfacebook": "Continue with Facebook",
      "continuewithapple": "Continue with Apple",
      "continuewithgoogle": "Continue with Google",
      "donthave": "Don't have an account? ",
-     "createone": "Create one"
+     "createone": "Create one",
+     "createaccount": "Create an account",
+     "name": "Name",
+     "joinus": "Join us",
+     "signinwithfacebook": "Sign in with Facebook",
+     "signinwithapple": "Sign in with Apple",
+     "signinwithgoogle": "Sign in with Google",
+     "haveanaccount": "Have an account? "
 }

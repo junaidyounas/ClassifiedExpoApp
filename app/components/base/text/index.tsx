@@ -9,6 +9,7 @@ type Props = {
      color?: string;
      fontSize?: number;
      bold?: boolean;
+     fixColor?: string
 };
 
 const BaseText = (props: Props | any) => {
@@ -18,12 +19,13 @@ const BaseText = (props: Props | any) => {
           color = colors.jet,
           fontSize = 12,
           bold = false,
+          fixColor,
      } = props;
      return (
           <Text
                {...props}
-               _light={{ color: color ? color : colors.richBlack }}
-               _dark={{ color: color ? color : colors.white }}
+               _light={{ color:fixColor ? fixColor : colors.richBlack }}
+               _dark={{ color:fixColor ? fixColor :  colors.white }}
                fontSize={fontSize}
                color={color}
                fontFamily={fontFamily || bold ? "bold" : ""}

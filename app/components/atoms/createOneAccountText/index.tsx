@@ -7,6 +7,8 @@ import { TouchableOpacity } from 'react-native';
 import { colors } from 'theme/colors';
 import { ln } from 'i18n';
 import { heightRatio } from 'utils/pixelRatio';
+import { navigate } from 'navigations/navRef';
+import { screens } from 'navigations/constants';
 
 type Props = {
           marginTop?: number
@@ -14,6 +16,9 @@ type Props = {
 
 const CreateOneAccountText = (props: Props | any) => {
           const { marginTop } = props;
+          const onPressCreateOne = () => {
+               navigate(screens.Signup)
+          }
   return (
        <View
             style={[
@@ -25,11 +30,15 @@ const CreateOneAccountText = (props: Props | any) => {
                  marginTop ? { marginTop: heightRatio(marginTop) } : {},
             ]}
        >
-            <BaseText textAlign="center" fontFamily={fonts.medium} ontSize={fontSizes.sm}>
+            <BaseText textAlign="center" fontFamily={fonts.medium} ontSize={fontSizes.xs}>
                  {ln("donthave")}
             </BaseText>
-            <TouchableOpacity>
-                 <BaseText fontSize={fontSizes.sm} color={colors.blue}>
+            <TouchableOpacity onPress={onPressCreateOne}>
+                 <BaseText
+                      fixColor={colors.red}
+                      fontSize={fontSizes.xs}
+                      color={colors.blue}
+                 >
                       {ln("createone")}
                  </BaseText>
             </TouchableOpacity>

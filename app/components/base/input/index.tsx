@@ -29,8 +29,8 @@ const BaseInput = (props: Props | any) => {
           inputWidth = 86,
           height = 7,
           label,
-          labelFontFamily = fonts.semiBold,
-          labelFontSize = fontSizes.sm,
+          labelFontFamily = fonts.regular,
+          labelFontSize = fontSizes.xs,
           secureTextEntry,
      } = props;
      return (

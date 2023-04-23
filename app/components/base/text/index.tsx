@@ -1,15 +1,39 @@
 import { StyleSheet } from "react-native";
 import React from "react";
-import {Text} from 'native-base'
+import { Text } from "native-base";
+import { colors } from "theme/colors";
 
 type Props = {
      children: string | JSX.Element | JSX.Element[];
+     fontFamily?: string;
+     color?: string;
+     fontSize?: number;
+     bold?: boolean;
 };
 
 const BaseText = (props: Props | any) => {
-     return <Text {...props}>{props.children}</Text>;
+     
+     const {
+          fontFamily = "regular",
+          color = colors.jet,
+          fontSize = 12,
+          bold = false,
+     } = props;
+     return (
+          <Text
+               {...props}
+               _light={{ color: color ? color : colors.richBlack }}
+               _dark={{ color: color ? color : colors.white }}
+               fontSize={fontSize}
+               color={color}
+               fontFamily={fontFamily || bold ? "bold" : ""}
+          >
+               {props.children}
+          </Text>
+     );
 };
 
 export default BaseText;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+});

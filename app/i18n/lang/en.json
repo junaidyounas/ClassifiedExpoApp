@@ -1,0 +1,13 @@
+{
+     "welcomeback": "Welcome back",
+     "enteremail": "Enter your email",
+     "enterpassword": "Enter your password",
+     "email": "E-mail",
+     "password": "Password",
+     "login": "Login",
+     "continuewithfacebook": "Continue with Facebook",
+     "continuewithapple": "Continue with Apple",
+     "continuewithgoogle": "Continue with Google",
+     "donthave": "Don't have an account? ",
+     "createone": "Create one"
+}

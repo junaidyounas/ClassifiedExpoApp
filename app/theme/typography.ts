@@ -1,3 +1,6 @@
+import { fonts } from "./fontNames";
+import { fontSizes } from "./fontSizes";
+
 export const typography = {
      letterSpacings: {
           xs: "-0.05em",
@@ -31,27 +34,6 @@ export const typography = {
           black: 900,
           extraBlack: 950,
      },
-     fonts: {
-          regular: "regular",
-          bold: "bold",
-          light: "light",
-          // body: "condensed",
-          medium: "medium",
-     },
-     fontSizes: {
-          "2xs": 10,
-          xs: 12,
-          sm: 14,
-          md: 16,
-          lg: 18,
-          xl: 20,
-          "2xl": 24,
-          "3xl": 30,
-          "4xl": 36,
-          "5xl": 48,
-          "6xl": 60,
-          "7xl": 72,
-          "8xl": 96,
-          "9xl": 128,
-     },
+     fonts: fonts,
+     fontSizes: fontSizes,
 };

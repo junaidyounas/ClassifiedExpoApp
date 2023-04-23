@@ -1,6 +1,5 @@
 import { ColorModesEnum } from "enum/colorModes";
 import { useColorMode } from "native-base";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IAppState } from "store/IAppState";
 import { setIsDarkMode } from "store/appState/appSlice";
@@ -15,10 +14,11 @@ const useColorModeChange = () => {
           dispatch(setIsDarkMode(!isDarkMode));
           colorModeManager
                .set(isDarkMode ? ColorModesEnum.Dark : ColorModesEnum.Light)
-               .then(() => {
+               .then(async () => {
                     toggleColorMode();
+                    await colorModeManager.get();
                });
-          colorModeManager.get();
+          
      };
      const setDarkMode = () => {
           _onChangeDarkMode();

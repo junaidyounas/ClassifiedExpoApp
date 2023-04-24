@@ -17,5 +17,11 @@
      "signinwithfacebook": "Sign in with Facebook",
      "signinwithapple": "Sign in with Apple",
      "signinwithgoogle": "Sign in with Google",
-     "haveanaccount": "Have an account? "
+     "haveanaccount": "Have an account? ",
+     "invalidusernameorpassword": "Invalid username or password",
+     "invaliduserdetails": "Invalid user details",
+     "usernotfound": "User not found",
+     "loggedinsuccess": "Logged in successfully",
+     "accountcreated": "Account created successfully",
+     "tryagain": "Try again later"
 }

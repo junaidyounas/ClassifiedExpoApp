@@ -4,6 +4,7 @@ import TermsAndPrivacy from "components/atoms/termsAndPrivacy";
 import BaseButton from "components/base/button";
 import BaseText from "components/base/text";
 import BaseView from "components/base/view";
+import ScrollViewLayout from "components/layouts/scroll";
 import EmailSignupComponent from "components/ui/emailSignup";
 import { ln } from "i18n";
 import React from "react";
@@ -44,7 +45,7 @@ const SignupScreen = (props: Props) => {
      );
      return (
           <BaseView style={styles.container}>
-               <BaseView width={widthRatio(86)}>
+               <ScrollViewLayout width={widthRatio(86)}>
                     <BaseText fontFamily={fonts.semiBold} fontSize={33} bold>
                          {ln("createaccount")}
                     </BaseText>
@@ -70,7 +71,7 @@ const SignupScreen = (props: Props) => {
                          marginTop={2}
                     />
                     <HaveAnAccount marginTop={2} />
-               </BaseView>
+               </ScrollViewLayout>
           </BaseView>
      );
 };

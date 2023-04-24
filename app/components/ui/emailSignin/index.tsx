@@ -1,48 +1,37 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import BaseButton from "components/base/button";
 import BaseInput from "components/base/input";
-import { KeyboardType } from "enum/KeyboardType";
+import BaseText from "components/base/text";
+import { useGoogleAuth } from "hooks/useGoogleAuth";
 import { ln } from "i18n";
 import { Pressable, View } from "native-base";
-import React, { useState, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { StyleSheet } from "react-native";
 import { colors } from "theme/colors";
+import { fonts } from "theme/fontNames";
 import { fontSizes } from "theme/fontSizes";
 import * as Yup from "yup";
 import { Formik } from "formik";
 import { firebaseUserService } from "services/firebase/user";
 import useToastShow from "hooks/useToastShow";
 
-const SignupFormSchema = Yup.object({
+type Props = {};
+
+const SignInFormSchema = Yup.object({
      email: Yup.string()
           .email("Please enter valid email address")
           .required("Email is required"),
      password: Yup.string().required("Password is Required"),
 });
 
-type Props = {};
-
-const EmailSignupComponent = (props: Props) => {
+const EmailSignInComponent = (props: Props) => {
      const [isLoading, setIsLoading] = useState(false);
-     const [isSecure, setIsSecure] = useState(true);
-     const formikRef = useRef<any>();
      const { successToast, errorToast, generalToast } = useToastShow();
+     
+     const [isSecure, setIsSecure] = useState(true);
+     const { user } = useGoogleAuth();
+     const formikRef = useRef<any>();
 
-
-     function onSignupSubmit(email: string, name: string, password: string) {
-          setIsLoading(true);
-          firebaseUserService.createFirebaseUser(email, name, password).then(() => {
-               successToast(ln("accountcreated"));
-          }).catch(() => {
-               errorToast(ln("tryagain"));
-          }).finally(() => {
-               setIsLoading(false);
-          });
-     }
-
-     const onLoginButtonPress = () => {
-          formikRef.current.handleSubmit();
-     };
      const LeftElementEmail = (
           <View pl={3}>
                <MaterialCommunityIcons
@@ -63,6 +52,27 @@ const EmailSignupComponent = (props: Props) => {
                />
           </View>
      );
+
+     function onSigninSubmit(email: string, password: string) {
+          console.log("===> ~ file: index.tsx:57 ~ onSigninSubmit ~ email:", email);
+          // setIsLoading(true);
+          // firebaseUserService.loginFirebaseUser(email, password).then(() => {
+          //      successToast(ln("loggedinsuccess"));
+          // }).catch((err) => {
+          //      errorToast(ln("invaliduserdetails"));
+          // }).finally(() => {
+          //      setIsLoading(false);
+          // });
+     }
+
+     const onLoginButtonPress = () => {
+          console.log(
+               "===> ~ file: index.tsx:57 ~ onSigninSubmit ~ email:",
+               formikRef.current
+          );
+
+          formikRef.current.handleSubmit();
+     };
      const RightElementPassword = (
           <Pressable onPress={() => setIsSecure(!isSecure)} pr={3}>
                <MaterialCommunityIcons
@@ -76,53 +86,48 @@ const EmailSignupComponent = (props: Props) => {
      return (
           <Formik
                innerRef={formikRef}
-               initialValues={{ email: "", name: "", password: "" }}
-               validationSchema={SignupFormSchema}
-               onSubmit={(values) =>
-                    onSignupSubmit(values.email, values.name, values.password)
-               }
+               initialValues={{ email: "", password: "" }}
+               validationSchema={SignInFormSchema}
+               onSubmit={(values) => onSigninSubmit(values.email, values.password)}
           >
-               {({ handleChange, touched, errors, values }) => (
+               {({ handleChange, touched, errors, values, handleSubmit }) => (
                     <>
                          <BaseInput
                               inputWidth={86}
-                              inputMarginTop={1}
+                              inputMarginTop={2}
                               label={ln("email")}
-                              KeyboardType={KeyboardType.emailAddress}
                               value={values.email}
                               onChange={handleChange("email")}
-                              marginTopLabel={2}
+                              marginTopLabel={4}
                               InputLeftElement={LeftElementEmail}
                               placeHolder={ln("enteremail")}
                               // isError={touched.email && errors.email ? true : false}
                          />
                          <BaseInput
                               inputWidth={86}
-                              inputMarginTop={1}
-                              label={ln("name")}
-                              value={values.name}
-                              onChange={handleChange("name")}
-                              marginTopLabel={2}
-                              InputLeftElement={LeftElementEmail}
-                              placeHolder={ln("entername")}
-                         />
-                         <BaseInput
-                              inputWidth={86}
-                              inputMarginTop={1}
+                              inputMarginTop={2}
                               label={ln("password")}
+                              marginTopLabel={4}
                               value={values.password}
                               onChange={handleChange("password")}
-                              marginTopLabel={2}
                               secureTextEntry={isSecure}
                               InputLeftElement={LeftElementPassword}
                               InputRightElement={RightElementPassword}
                               placeHolder={ln("enterpassword")}
                          />
+                         <BaseText
+                              fontSize={fontSizes.xs}
+                              fontFamily={fonts.semiBold}
+                              marginTop={2}
+                              textAlign="right"
+                         >
+                              Forgot password?
+                         </BaseText>
                          <BaseButton
                               isLoading={isLoading}
                               onPress={onLoginButtonPress}
-                              text={ln("joinus")}
-                              marginTop={6}
+                              text={ln("login")}
+                              marginTop={7}
                          />
                     </>
                )}
@@ -130,6 +135,6 @@ const EmailSignupComponent = (props: Props) => {
      );
 };
 
-export default EmailSignupComponent;
+export default EmailSignInComponent;
 
 const styles = StyleSheet.create({});

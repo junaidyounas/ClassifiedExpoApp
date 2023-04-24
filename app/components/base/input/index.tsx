@@ -46,6 +46,7 @@ const BaseInput = (props: Props | any) => {
                     </BaseText>
                )}
                <Input
+                    {...props}
                     marginTop={inputMarginTop}
                     width={widthRatio(inputWidth)}
                     height={heightRatio(height)}
@@ -56,7 +57,6 @@ const BaseInput = (props: Props | any) => {
                     variant="outline"
                     textDecorationLine={"none"}
                     placeholder={placeHolder}
-                    {...props}
                />
           </>
      );

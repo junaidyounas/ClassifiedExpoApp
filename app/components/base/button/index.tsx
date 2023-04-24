@@ -17,7 +17,7 @@ type Props = {
      textColor?: string
 };
 
-const BaseButton = (props: Props) => {
+const BaseButton = (props: Props | any) => {
      const {
           marginTop = 0,
           height = 6,

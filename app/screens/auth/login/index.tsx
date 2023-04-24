@@ -13,11 +13,13 @@ import { colors } from "theme/colors";
 import { fonts } from "theme/fontNames";
 import BaseButton from "components/base/button";
 import CreateOneAccountText from "components/atoms/createOneAccountText";
+import { useGoogleAuth } from "hooks/useGoogleAuth";
 type Props = {};
 
 const LoginScreen = (props: Props) => {
      const [isTrue, setIsTrue] = useState(false);
      const [isSecure, setIsSecure] = useState(true);
+     const {user} = useGoogleAuth();
      const LeftElementEmail = (
           <View pl={3}>
                <MaterialCommunityIcons

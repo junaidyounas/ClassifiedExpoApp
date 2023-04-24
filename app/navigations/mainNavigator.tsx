@@ -6,10 +6,13 @@ import * as React from "react";
 import AuthNavigator from "./authNavigtator";
 import { screens } from "./constants";
 import { navigationRef } from "./navRef";
+import { useGoogleAuth } from "hooks/useGoogleAuth";
+import DashboardScreen from "screens/dashboard";
 
 const Stack = createNativeStackNavigator();
 
 function MainNavigator() {
+     const { user } = useGoogleAuth();
      return (
           <NavigationContainer ref={navigationRef}>
                <Stack.Navigator
@@ -17,8 +20,11 @@ function MainNavigator() {
                          headerShown: false,
                     }}
                >
-                    <Stack.Screen name={screens.Main} component={AuthNavigator} />
-                    {/* <Stack.Screen name={screens.Main} component={DashboardScreen} /> */}
+                    {user && user?.emailVerified ? (
+                         <Stack.Screen name={screens.Main} component={DashboardScreen} />
+                    ) : (
+                         <Stack.Screen name={screens.Main} component={AuthNavigator} />
+                    )}
                </Stack.Navigator>
           </NavigationContainer>
      );

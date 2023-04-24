@@ -2,7 +2,7 @@ import { ColorModesEnum } from "enum/colorModes";
 import { useColorMode } from "native-base";
 import { useDispatch, useSelector } from "react-redux";
 import { IAppState } from "store/IAppState";
-import { setIsDarkMode } from "store/appState/appSlice";
+import { setIsDarkMode } from "store/app/appSlice";
 import { colorModeManager } from "theme/colorModeManager";
 
 const useColorModeChange = () => {

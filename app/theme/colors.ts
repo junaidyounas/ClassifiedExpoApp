@@ -22,5 +22,8 @@ export const colors = {
      blue: "#0B4984",
      transparentWhite: "rgba(245, 245, 245, 0.1)",
      grayRGBA: "rgba(240, 240, 240, 0.5)",
+     rgbaGreen: "rgba(47, 255, 117, 0.3)",
+     rgbaRed: "rgba(255, 47, 47, 0.2)",
+     rgbaWhite: "rgba(255, 255, 255, 0.7)",
      gray: "#dee2e6",
 };

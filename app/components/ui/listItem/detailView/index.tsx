@@ -11,12 +11,16 @@ import { fonts } from "theme/fontNames";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import VerifiedBadge from "components/atoms/verifiedBadge";
 import StarRating from "components/atoms/starRating";
+import PriceTag from "components/atoms/priceTag";
+import LocationTag from "components/atoms/locationTag";
 
 type Props = {};
 
 const ListItemDetailView = (props: Props) => {
      return (
           <BaseView style={styles.container}>
+               <LocationTag paddingHorizontal={0} mb={1}/>
+
                <BaseView mb={2} style={styles.horizontalView}>
                     <BaseText
                          width={widthRatio(45)}
@@ -27,6 +31,14 @@ const ListItemDetailView = (props: Props) => {
                     </BaseText>
                     <FontAwesome name="bookmark" size={15} color="black" />
                </BaseView>
+               <BaseText
+                    fontSize={fontSizes["sm"]}
+                    fontFamily={fonts.semiBold}
+                    color={colors.coral}
+               >
+                    Rs 2000
+               </BaseText>
+
                <StarRating />
                <BaseView alignItems="center" marginTop={1} style={styles.horizontalView}>
                     <VerifiedBadge />

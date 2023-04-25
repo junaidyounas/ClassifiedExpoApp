@@ -15,8 +15,13 @@ const ListSingleItem = (props: Props) => {
      const { item, index } = props;
      return (
           <BaseView shadow={2} key={index} style={styles.container}>
-               <BaseImage borderRadius={widthRatio(3)} width={widthRatio(28)} height={widthRatio(28)} />
-                    <ListItemDetailView />
+               <BaseImage
+                    borderTopLeftRadius={widthRatio(3)}
+                    borderBottomLeftRadius={widthRatio(3)}
+                    width={widthRatio(28)}
+                    height={widthRatio(28)}
+               />
+               <ListItemDetailView />
           </BaseView>
      );
 };
@@ -29,9 +34,9 @@ const styles = StyleSheet.create({
           maxWidth: widthRatio(91),
           borderRadius: widthRatio(3),
           flexDirection: "row",
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          marginTop: heightRatio(1.5)
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginTop: heightRatio(1.5),
      },
      bottomView: {
           borderRadius: widthRatio(3),

@@ -8,17 +8,30 @@ type Props = {
      width: number;
      height: number;
      borderTopLeftRadius?: number;
-     borderTopRightRadius? : number
+     borderTopRightRadius?: number;
+     borderBottomLeftRadius?: number;
 };
 
 const BaseImage = (props: Props | any) => {
-  const { width = "100%", height = "60%", borderTopLeftRadius, borderTopRightRadius } = props;
+  const {
+       width = "100%",
+       height = "60%",
+       borderTopLeftRadius,
+       borderTopRightRadius,
+       borderBottomLeftRadius,
+  } = props;
   return (
        <Image
             source={images.imgPlaceHolder}
             style={[
                  styles.image,
-                 { width, height, borderTopRightRadius, borderTopLeftRadius },
+                 {
+                      width,
+                      height,
+                      borderTopRightRadius,
+                      borderTopLeftRadius,
+                      borderBottomLeftRadius,
+                 },
             ]}
             {...props}
        />

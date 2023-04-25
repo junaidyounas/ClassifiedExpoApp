@@ -19,7 +19,7 @@ const VerifiedBadge = (props: Props) => {
        <BaseView
             style={[
                  styles.verifybadge,
-                 { backgroundColor: isVerified ? colors.pureGreen : colors.mustard },
+                 { backgroundColor: isVerified ? colors.rgbaGreen : colors.rgbaRed },
             ]}
        >
             <BaseText
@@ -33,7 +33,7 @@ const VerifiedBadge = (props: Props) => {
                       <MaterialCommunityIcons
                            name="check-decagram"
                            size={10}
-                           color={colors.darkGreen}
+                           color={colors.jungleGreen}
                       />
                  ) : (
                       <Entypo name="circle-with-cross" size={10} color={colors.red} />
@@ -51,5 +51,6 @@ const styles = StyleSheet.create({
           padding: 2,
           borderRadius: widthRatio(2),
           alignItems: "center",
+          paddingHorizontal: widthRatio(1)
      },
 });

@@ -1,19 +1,16 @@
+import { AntDesign, Feather, Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import DashboardScreen from "screens/dashboard";
-import { screens } from "./constants";
+import { View } from "native-base";
 import { Platform, StyleSheet } from "react-native";
 import SearchScreen from "screens/Search";
+import UserScreen from "screens/User";
 import AddNewAdScreen from "screens/addNewAd";
 import ChatScreen from "screens/chat";
-import UserScreen from "screens/User";
-import { heightRatio, widthRatio } from "utils/pixelRatio";
+import DashboardScreen from "screens/dashboard";
 import { colors } from "theme/colors";
+import { heightRatio, widthRatio } from "utils/pixelRatio";
 import { textRatio } from "utils/textRatio";
-import { AntDesign } from "@expo/vector-icons"; 
-import { Feather } from "@expo/vector-icons";
-import { Ionicons } from "@expo/vector-icons";
-import { View } from "native-base";
-
+import { screens } from "./constants";
 
 const Tab = createBottomTabNavigator();
 
@@ -25,33 +22,45 @@ export function BottomTabsNavigator() {
                          switch (route.name) {
                               case screens.Main:
                                    return (
-                                        <AntDesign name="home" size={24} color="black" />
+                                        <AntDesign
+                                             name="home"
+                                             size={24}
+                                             color={focused ? colors.coral : "black"}
+                                        />
                                    );
                               case screens.Seach:
                                    return (
-                                        <Feather name="search" size={24} color="black" />
+                                        <Feather
+                                             name="search"
+                                             size={24}
+                                             color={focused ? colors.coral : "black"}
+                                        />
                                    );
                               case screens.Add:
                                    return (
-                                             <View style={styles.innerAddStyle}>
-                                                  <Ionicons
-                                                       name="add-circle-sharp"
-                                                       size={widthRatio(15)}
-                                                       color="black"
-                                                  />
-                                             </View>
+                                        <View style={styles.innerAddStyle}>
+                                             <Ionicons
+                                                  name="add-circle-sharp"
+                                                  size={widthRatio(15)}
+                                                  color={colors.coral}
+                                             />
+                                        </View>
                                    );
                               case screens.Chat:
                                    return (
                                         <Ionicons
                                              name="chatbubbles-outline"
                                              size={24}
-                                             color="black"
+                                             color={focused ? colors.coral : "black"}
                                         />
                                    );
                               case screens.User:
                                    return (
-                                        <AntDesign name="user" size={24} color="black" />
+                                        <AntDesign
+                                             name="user"
+                                             size={24}
+                                             color={focused ? colors.coral : "black"}
+                                        />
                                    );
 
                               default:
@@ -68,7 +77,7 @@ export function BottomTabsNavigator() {
                     },
                     animationEnabled: false,
                     headerShown: false,
-                    tabBarShowLabel: false
+                    tabBarShowLabel: false,
                })}
           >
                <Tab.Screen name={screens.Main} component={DashboardScreen} />
@@ -80,19 +89,9 @@ export function BottomTabsNavigator() {
      );
 }
 
-
 const styles = StyleSheet.create({
      innerAddStyle: {
-          backgroundColor: colors.charcol,
-          alignItems: "center",
-          justifyContent: "center",
-          textAlign: "center",
-          alignContent: 'center',
-          alignSelf: 'center',
-          display: "flex",
-          width: widthRatio(16),
-          height: widthRatio(16),
-          borderRadius: widthRatio(8),
-          paddingLeft: widthRatio(1)
+          backgroundColor: colors.transparent,
+          marginTop: -heightRatio(5),
      },
 });

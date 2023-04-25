@@ -20,4 +20,6 @@ export const colors = {
      mustard: "#FFD447",
      steelBlue: "#3F88C5",
      blue: "#0B4984",
+     transparentWhite: "rgba(245, 245, 245, 0.1)",
+     grayRGBA: "rgba(240, 240, 240, 0.5)",
 };

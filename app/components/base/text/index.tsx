@@ -24,11 +24,11 @@ const BaseText = (props: Props | any) => {
      return (
           <Text
                {...props}
-               _light={{ color:fixColor ? fixColor : colors.richBlack }}
-               _dark={{ color:fixColor ? fixColor :  colors.white }}
+               _light={{ color: fixColor ? fixColor : colors.richBlack }}
+               _dark={{ color: fixColor ? fixColor : colors.white }}
                fontSize={fontSize}
                color={color}
-               fontFamily={fontFamily || bold ? "bold" : ""}
+               fontFamily={fontFamily}
           >
                {props.children}
           </Text>

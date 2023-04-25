@@ -14,6 +14,7 @@ import * as Yup from "yup";
 import { Formik } from "formik";
 import { firebaseUserService } from "services/firebase/user";
 import useToastShow from "hooks/useToastShow";
+import { User } from "firebase/auth";
 
 type Props = {};
 
@@ -27,7 +28,7 @@ const SignInFormSchema = Yup.object({
 const EmailSignInComponent = (props: Props) => {
      const [isLoading, setIsLoading] = useState(false);
      const { successToast, errorToast, generalToast } = useToastShow();
-     
+
      const [isSecure, setIsSecure] = useState(true);
      const { user } = useGoogleAuth();
      const formikRef = useRef<any>();
@@ -54,23 +55,25 @@ const EmailSignInComponent = (props: Props) => {
      );
 
      function onSigninSubmit(email: string, password: string) {
-          console.log("===> ~ file: index.tsx:57 ~ onSigninSubmit ~ email:", email);
-          // setIsLoading(true);
-          // firebaseUserService.loginFirebaseUser(email, password).then(() => {
-          //      successToast(ln("loggedinsuccess"));
-          // }).catch((err) => {
-          //      errorToast(ln("invaliduserdetails"));
-          // }).finally(() => {
-          //      setIsLoading(false);
-          // });
+          setIsLoading(true);
+          firebaseUserService
+               .loginFirebaseUser(email, password)
+               .then((res: User) => {
+                    if (!res.emailVerified) {
+                         generalToast(ln("emailnotverified"));
+                    } else {
+                         successToast(ln("loggedinsuccess"));
+                    }
+               })
+               .catch((err) => {
+                    errorToast(ln("invaliduserdetails"));
+               })
+               .finally(() => {
+                    setIsLoading(false);
+               });
      }
 
      const onLoginButtonPress = () => {
-          console.log(
-               "===> ~ file: index.tsx:57 ~ onSigninSubmit ~ email:",
-               formikRef.current
-          );
-
           formikRef.current.handleSubmit();
      };
      const RightElementPassword = (
@@ -97,7 +100,7 @@ const EmailSignInComponent = (props: Props) => {
                               inputMarginTop={2}
                               label={ln("email")}
                               value={values.email}
-                              onChange={handleChange("email")}
+                              onChangeText={handleChange("email")}
                               marginTopLabel={4}
                               InputLeftElement={LeftElementEmail}
                               placeHolder={ln("enteremail")}
@@ -109,7 +112,7 @@ const EmailSignInComponent = (props: Props) => {
                               label={ln("password")}
                               marginTopLabel={4}
                               value={values.password}
-                              onChange={handleChange("password")}
+                              onChangeText={handleChange("password")}
                               secureTextEntry={isSecure}
                               InputLeftElement={LeftElementPassword}
                               InputRightElement={RightElementPassword}
@@ -125,7 +128,7 @@ const EmailSignInComponent = (props: Props) => {
                          </BaseText>
                          <BaseButton
                               isLoading={isLoading}
-                              onPress={onLoginButtonPress}
+                              onPressIn={onLoginButtonPress}
                               text={ln("login")}
                               marginTop={7}
                          />

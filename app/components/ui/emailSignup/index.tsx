@@ -90,7 +90,7 @@ const EmailSignupComponent = (props: Props) => {
                               label={ln("email")}
                               KeyboardType={KeyboardType.emailAddress}
                               value={values.email}
-                              onChange={handleChange("email")}
+                              onChangeText={handleChange("email")}
                               marginTopLabel={2}
                               InputLeftElement={LeftElementEmail}
                               placeHolder={ln("enteremail")}
@@ -101,7 +101,7 @@ const EmailSignupComponent = (props: Props) => {
                               inputMarginTop={1}
                               label={ln("name")}
                               value={values.name}
-                              onChange={handleChange("name")}
+                              onChangeText={handleChange("name")}
                               marginTopLabel={2}
                               InputLeftElement={LeftElementEmail}
                               placeHolder={ln("entername")}
@@ -111,7 +111,7 @@ const EmailSignupComponent = (props: Props) => {
                               inputMarginTop={1}
                               label={ln("password")}
                               value={values.password}
-                              onChange={handleChange("password")}
+                              onChangeText={handleChange("password")}
                               marginTopLabel={2}
                               secureTextEntry={isSecure}
                               InputLeftElement={LeftElementPassword}
@@ -120,7 +120,7 @@ const EmailSignupComponent = (props: Props) => {
                          />
                          <BaseButton
                               isLoading={isLoading}
-                              onPress={onLoginButtonPress}
+                              onPressIn={onLoginButtonPress}
                               text={ln("joinus")}
                               marginTop={6}
                          />

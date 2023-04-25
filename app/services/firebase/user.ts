@@ -1,4 +1,5 @@
 import {
+     User,
      createUserWithEmailAndPassword,
      getAuth,
      sendEmailVerification,
@@ -15,10 +16,6 @@ const createFirebaseUser = (email: string, name: string, password: string) => {
      return new Promise((resolve, reject) => {
           createUserWithEmailAndPassword(auth, email, password)
                .then((userCredential) => {
-                    console.log(
-                         "===> ~ file: user.ts:10 ~ .then ~ userCredential:",
-                         userCredential.user
-                    );
                     const user = userCredential.user;
                     updateProfile(user, {
                          displayName: name,
@@ -29,32 +26,19 @@ const createFirebaseUser = (email: string, name: string, password: string) => {
                     navigate(screens.Login)
                })
                .catch((error) => {
-                    console.log(
-                         "===> ~ file: user.ts:14 ~ createFirebaseUser ~ error:",
-                         error
-                    );
                     reject(error);
                });
      });
 };
 
 const loginFirebaseUser = (email: string, password: string) => {
-     return new Promise((resolve, reject) => {
+     return new Promise<User>((resolve, reject) => {
           signInWithEmailAndPassword(auth, email, password)
                .then((userCredential) => {
-                    console.log(
-                         "===> ~ file: user.ts:10 ~ .then ~ userCredential:",
-                         userCredential.user
-                    );
                     const user = userCredential.user;
                     resolve(user);
                })
                .catch((error) => {
-                    console.log(
-                         "===> ~ file: user.ts:14 ~ createFirebaseUser ~ error:",
-                         error.message,
-                         error.code
-                    );
                     reject(error);
                });
      });

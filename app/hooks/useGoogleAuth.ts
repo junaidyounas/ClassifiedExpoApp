@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { getAuth, onAuthStateChanged, User, updateProfile } from "firebase/auth";
 import { _firebase } from "services/firebase";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,8 +8,7 @@ import { IAppState } from "store/IAppState";
 const auth = getAuth(_firebase);
 
 export function useGoogleAuth() {
-     const dispatch = useDispatch();
-     const { user } = useSelector((state: IAppState) => state.auth);
+     const [user, setUser] = useState<User|null>();
      React.useEffect(() => {
           const unsubscribeFromAuthStatuChanged = onAuthStateChanged(auth, (_user) => {
                if (_user) {
@@ -22,10 +21,10 @@ export function useGoogleAuth() {
                     //      );
 
                     // })
-                    dispatch(setUser(_user));
+                    setUser(_user);
                } else {
                     // User is signed out
-                    dispatch(setUser({}));
+                    setUser(null);
                }
           });
 

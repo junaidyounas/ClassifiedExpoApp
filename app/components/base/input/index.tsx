@@ -29,7 +29,7 @@ const BaseInput = (props: Props | any) => {
           inputWidth = 86,
           height = 7,
           label,
-          labelFontFamily = fonts.regular,
+          labelFontFamily = fonts.medium,
           labelFontSize = fontSizes.xs,
           secureTextEntry,
      } = props;
@@ -69,6 +69,5 @@ const styles = StyleSheet.create({
           height: heightRatio(7),
      },
      text: {
-          fontFamily: "light",
      },
 });

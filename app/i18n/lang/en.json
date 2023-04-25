@@ -23,5 +23,6 @@
      "usernotfound": "User not found",
      "loggedinsuccess": "Logged in successfully",
      "accountcreated": "Account created successfully",
-     "tryagain": "Try again later"
+     "tryagain": "Try again later",
+     "emailnotverified": "Email not verified, please verify your email address"
 }

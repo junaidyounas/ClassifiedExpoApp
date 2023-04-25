@@ -45,7 +45,7 @@ const FlatListMenu = (props: Props) => {
             <BaseView style={styles.rightCard}>
                  <Pressable onPress={() => setIsGrid(true)}>
                       <BaseView
-                           backgroundColor={isGrid ? colors.grayRGBA : colors.transparent}
+                           backgroundColor={isGrid ? colors.gray : colors.transparent}
                            style={styles.rightInnerCard}
                       >
                            <Entypo name="grid" size={18} color="black" />
@@ -53,9 +53,7 @@ const FlatListMenu = (props: Props) => {
                  </Pressable>
                  <Pressable onPress={() => setIsGrid(false)}>
                       <BaseView
-                           backgroundColor={
-                                !isGrid ? colors.grayRGBA : colors.transparent
-                           }
+                           backgroundColor={!isGrid ? colors.gray : colors.transparent}
                            style={styles.rightInnerCard}
                       >
                            <MaterialIcons

@@ -22,4 +22,5 @@ export const colors = {
      blue: "#0B4984",
      transparentWhite: "rgba(245, 245, 245, 0.1)",
      grayRGBA: "rgba(240, 240, 240, 0.5)",
+     gray: "#dee2e6",
 };

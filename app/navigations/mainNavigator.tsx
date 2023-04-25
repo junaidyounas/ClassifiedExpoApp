@@ -8,6 +8,7 @@ import { screens } from "./constants";
 import { navigationRef } from "./navRef";
 import { useGoogleAuth } from "hooks/useGoogleAuth";
 import DashboardScreen from "screens/dashboard";
+import { BottomTabsNavigator } from "./tabsNavigator";
 
 const Stack = createNativeStackNavigator();
 
@@ -21,7 +22,7 @@ function MainNavigator() {
                     }}
                >
                     {user && user?.emailVerified ? (
-                         <Stack.Screen name={screens.Main} component={DashboardScreen} />
+                         <Stack.Screen name={screens.Main} component={BottomTabsNavigator} />
                     ) : (
                          <Stack.Screen name={screens.Main} component={AuthNavigator} />
                     )}

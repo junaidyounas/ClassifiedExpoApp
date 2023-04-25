@@ -7,7 +7,7 @@ import FlatListMenu from "components/molecules/flatListMenu";
 import BaseView from "components/base/view";
 import { colors } from "theme/colors";
 import GridSingleItem from "components/ui/gridItem";
-import { heightRatio } from "utils/pixelRatio";
+import { heightRatio, widthRatio } from "utils/pixelRatio";
 import ListSingleItem from "components/ui/listItem";
 
 type Props = {};
@@ -33,7 +33,7 @@ const DashboardScreen = (props: Props) => {
                     data={[1, 2, 3]}
                     ListHeaderComponent={
                          <>
-                              <MainPageAdView />
+                              {/* <MainPageAdView /> */}
                               <FlatListMenu
                                    isGrid={isGridStyle}
                                    setIsGrid={setIsGridStyle}
@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
      },
      flatListContainer: {
           paddingBottom: heightRatio(15),
+          width: widthRatio(92)
      },
      wrapperStyle: {
           justifyContent: "space-between",

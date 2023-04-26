@@ -4,11 +4,14 @@ import {
      getAuth,
      sendEmailVerification,
      signInWithEmailAndPassword,
-     updateProfile
+     updateProfile,
+     signOut
 } from "firebase/auth";
 import { screens } from "navigations/constants";
 import { navigate } from "navigations/navRef";
 import { _firebase } from "./";
+import { store } from "store/store";
+import { setUser } from "store/auth/authSlice";
 
 export const auth = getAuth(_firebase);
 const createFirebaseUser = (email: string, name: string, password: string) => {
@@ -36,6 +39,7 @@ const loginFirebaseUser = (email: string, password: string) => {
           signInWithEmailAndPassword(auth, email, password)
                .then((userCredential) => {
                     const user = userCredential.user;
+                    store.dispatch(setUser(user));
                     resolve(user);
                })
                .catch((error) => {
@@ -44,7 +48,15 @@ const loginFirebaseUser = (email: string, password: string) => {
      });
 };
 
+const logoutFirebaseEmail = () => {
+     signOut(auth).then(() => {
+                    store.dispatch(setUser({}));
+
+     });
+}
+
 export const firebaseUserService = {
      createFirebaseUser,
      loginFirebaseUser,
+     logoutFirebaseEmail,
 };

@@ -9,11 +9,14 @@ import { navigationRef } from "./navRef";
 import { useGoogleAuth } from "hooks/useGoogleAuth";
 import DashboardScreen from "screens/dashboard";
 import { BottomTabsNavigator } from "./tabsNavigator";
+import LoaderScreen from "screens/loader";
+import { useSelector } from "react-redux";
+import { IAppState } from "store/IAppState";
 
 const Stack = createNativeStackNavigator();
 
 function MainNavigator() {
-     const { user } = useGoogleAuth();
+     const {user} = useSelector((state: IAppState) => state.auth);
      return (
           <NavigationContainer ref={navigationRef}>
                <Stack.Navigator
@@ -21,8 +24,13 @@ function MainNavigator() {
                          headerShown: false,
                     }}
                >
+                    <Stack.Screen name={screens.Loader} component={LoaderScreen} />
+
                     {user && user?.emailVerified ? (
-                         <Stack.Screen name={screens.Main} component={BottomTabsNavigator} />
+                         <Stack.Screen
+                              name={screens.Main}
+                              component={BottomTabsNavigator}
+                         />
                     ) : (
                          <Stack.Screen name={screens.Main} component={AuthNavigator} />
                     )}

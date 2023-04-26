@@ -2,8 +2,8 @@ import { AntDesign, Feather, Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { View } from "native-base";
 import { Platform, StyleSheet } from "react-native";
-import SearchScreen from "screens/Search";
-import UserScreen from "screens/User";
+import SearchScreen from "screens/search";
+import UserScreen from "screens/user";
 import AddNewAdScreen from "screens/addNewAd";
 import ChatScreen from "screens/chat";
 import DashboardScreen from "screens/dashboard";
@@ -84,7 +84,15 @@ export function BottomTabsNavigator() {
                <Tab.Screen name={screens.Seach} component={SearchScreen} />
                <Tab.Screen name={screens.Add} component={AddNewAdScreen} />
                <Tab.Screen name={screens.Chat} component={ChatScreen} />
-               <Tab.Screen name={screens.User} component={UserScreen} />
+               <Tab.Screen
+                    options={() => ({
+                         tabBarStyle: {
+                              display: "none",
+                         },
+                    })}
+                    name={screens.User}
+                    component={UserScreen}
+               />
           </Tab.Navigator>
      );
 }

@@ -13,12 +13,12 @@ const PriceTag = (props: Props | any) => {
   return (
        <BaseView style={styles.container}>
             <BaseText
-                 fontSize={fontSizes["sm"]}
+                 fontSize={11}
                  fontFamily={fonts.semiBold}
                  color={colors.coral}
                  {...props}
             >
-                 Rs2000
+                 Rs 2000
             </BaseText>
        </BaseView>
   );
@@ -28,8 +28,8 @@ export default PriceTag
 
 const styles = StyleSheet.create({
      container: {
-          borderRadius: widthRatio(1.5),
+          borderRadius: widthRatio(3),
           paddingHorizontal: widthRatio(1.3),
-          paddingVertical: widthRatio(0.5)
+          paddingVertical: widthRatio(0.2)
      }
 });

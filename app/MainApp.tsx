@@ -1,6 +1,8 @@
+import { NavigationContainer } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import { NativeBaseProvider } from "native-base";
 import MainNavigator from "navigations/mainNavigator";
+import { navigationRef } from "navigations/navRef";
 import React from "react";
 import { StyleSheet } from "react-native";
 
@@ -13,10 +15,10 @@ const MainApp = () => {
      const { isDarkMode } = useSelector((state: IAppState) => state.app);
 
      return (
-          <NativeBaseProvider theme={theme}>
-               <StatusBar style={!isDarkMode ? "light" : "dark"} />
-               <MainNavigator />
-          </NativeBaseProvider>
+               <NativeBaseProvider theme={theme}>
+                    <StatusBar style={!isDarkMode ? "light" : "dark"} />
+                    <MainNavigator />
+               </NativeBaseProvider>
      );
 };
 

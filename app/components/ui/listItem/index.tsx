@@ -19,7 +19,7 @@ const ListSingleItem = (props: Props) => {
                     borderTopLeftRadius={widthRatio(3)}
                     borderBottomLeftRadius={widthRatio(3)}
                     width={widthRatio(28)}
-                    height={widthRatio(28)}
+                    height={'100%'}
                />
                <ListItemDetailView />
           </BaseView>

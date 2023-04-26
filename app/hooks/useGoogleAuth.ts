@@ -1,14 +1,13 @@
-import React, { useState } from "react";
-import { getAuth, onAuthStateChanged, User, updateProfile } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import React from "react";
+import { useDispatch } from "react-redux";
 import { _firebase } from "services/firebase";
-import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "store/auth/authSlice";
-import { IAppState } from "store/IAppState";
 
 const auth = getAuth(_firebase);
 
 export function useGoogleAuth() {
-     const [user, setUser] = useState<User|null>();
+     const dispatch = useDispatch();
      React.useEffect(() => {
           const unsubscribeFromAuthStatuChanged = onAuthStateChanged(auth, (_user) => {
                if (_user) {
@@ -21,10 +20,12 @@ export function useGoogleAuth() {
                     //      );
 
                     // })
-                    setUser(_user);
+                    dispatch(setUser(_user));
+
                } else {
                     // User is signed out
-                    setUser(null);
+                    dispatch(setUser({}))
+
                }
           });
 
@@ -32,6 +33,6 @@ export function useGoogleAuth() {
      }, []);
 
      return {
-          user,
+          
      };
 }

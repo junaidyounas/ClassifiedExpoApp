@@ -60,10 +60,11 @@ const styles = StyleSheet.create({
      container: {
           width: widthRatio(62),
           padding: widthRatio(2),
+          borderTopRightRadius: widthRatio(3),
+          borderBottomRightRadius: widthRatio(3),
      },
      horizontalView: {
           flexDirection: "row",
           justifyContent: "space-between",
      },
-     
 });

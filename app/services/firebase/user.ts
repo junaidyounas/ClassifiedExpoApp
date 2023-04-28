@@ -59,7 +59,6 @@ const loginGoogleSignInLinkWithCredientials = (token: string) => {
           signInWithCredential(auth, cred)
                .then((userCredential) => {
                     const user = userCredential.user;
-                    console.log("===> ~ file: user.ts:61 ~ .then ~ user:", user);
                     store.dispatch(setUser(user));
                     resolve(user);
                })

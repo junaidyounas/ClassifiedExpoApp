@@ -1,11 +1,13 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import CreateOneAccountText from "components/atoms/createOneAccountText";
+import BaseSpinner from "components/base/Spinner";
 import BaseButton from "components/base/button";
 import BaseText from "components/base/text";
 import BaseView from "components/base/view";
 import EmailSignInComponent from "components/ui/emailSignin";
 import { useGoogleAuth } from "hooks/useGoogleAuth";
 import { ln } from "i18n";
+import { Spinner } from "native-base";
 import React, { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
 import { colors } from "theme/colors";
@@ -13,11 +15,10 @@ import { fonts } from "theme/fontNames";
 import { fontSizes } from "theme/fontSizes";
 import { heightRatio, widthRatio } from "utils/pixelRatio";
 
-
 type Props = {};
 
 const LoginScreen = (props: Props) => {
-   const {userInfo, googleSignIn} = useGoogleAuth();
+     const { isLoading, googleSignIn } = useGoogleAuth();
      const LeftFacebookIcon = (
           <MaterialCommunityIcons
                name={"facebook"}
@@ -44,6 +45,7 @@ const LoginScreen = (props: Props) => {
      );
      return (
           <BaseView style={styles.container}>
+               {isLoading ? <BaseSpinner /> : null}
                <BaseView width={widthRatio(86)}>
                     <BaseText fontFamily={fonts.semiBold} fontSize={33} bold>
                          {ln("welcomeback")}
@@ -67,9 +69,7 @@ const LoginScreen = (props: Props) => {
                          backgroundColor={colors.red}
                          textColor={colors.white}
                          marginTop={2}
-                         onPress={() => {
-                              googleSignIn();
-                         }}
+                         onPress={googleSignIn}
                     />
                     <CreateOneAccountText marginTop={4} />
                </BaseView>

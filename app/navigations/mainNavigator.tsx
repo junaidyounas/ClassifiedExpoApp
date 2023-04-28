@@ -3,15 +3,13 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";
+import { useSelector } from "react-redux";
+import LoaderScreen from "screens/loader";
+import { IAppState } from "store/IAppState";
 import AuthNavigator from "./authNavigtator";
 import { screens } from "./constants";
 import { navigationRef } from "./navRef";
-import { useGoogleAuth } from "hooks/useGoogleAuth";
-import DashboardScreen from "screens/dashboard";
 import { BottomTabsNavigator } from "./tabsNavigator";
-import LoaderScreen from "screens/loader";
-import { useSelector } from "react-redux";
-import { IAppState } from "store/IAppState";
 
 const Stack = createNativeStackNavigator();
 

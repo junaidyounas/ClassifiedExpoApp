@@ -14,7 +14,7 @@ const auth = getAuth(_firebase);
 export function useGoogleAuth() {
      const [token, setToken] = useState("");
      const [idToken, setIdToken] = useState("");
-     const [userInfo, setUserInfo] = useState(null);
+     const [isLoading, setIsLoading] = useState(false);
      const dispatch = useDispatch();
      React.useEffect(() => {
           const unsubscribeFromAuthStatuChanged = onAuthStateChanged(auth, (_user) => {
@@ -38,7 +38,7 @@ export function useGoogleAuth() {
           return unsubscribeFromAuthStatuChanged;
      }, []);
 
-     const [request, response, googleSignIn] = Google.useAuthRequest({
+     const [request, response, googleLogin] = Google.useAuthRequest({
           androidClientId: Constants.manifest?.extra?.googleWebClientId,
           expoClientId: Constants.manifest?.extra?.googleWebClientId,
 
@@ -50,29 +50,43 @@ export function useGoogleAuth() {
                setToken(response.authentication.accessToken);
                setIdToken(response.authentication?.idToken);
                getUserInfo();
+          } else {
+               setIsLoading(false);
           }
      }, [response, token]);
 
      const getUserInfo = async () => {
           try {
-               const response = await fetch("https://www.googleapis.com/userinfo/v2/me", {
-                    headers: { Authorization: `Bearer ${token}` },
-               });
+               // const response = await fetch("https://www.googleapis.com/userinfo/v2/me", {
+               //      headers: { Authorization: `Bearer ${token}` },
+               // });
 
-               const user = await response.json();
-               console.log(
-                    "===> ~ file: useGoogleAuth.ts:64 ~ getUserInfo ~ user:",
-                    user
-               );
-               firebaseUserService.loginGoogleSignInLinkWithCredientials(idToken);
-               setUserInfo(user);
+               // const user = await response.json();
+               // console.log(
+               //      "===> ~ file: useGoogleAuth.ts:64 ~ getUserInfo ~ user:",
+               //      user
+               // );
+               firebaseUserService
+                    .loginGoogleSignInLinkWithCredientials(idToken)
+                    .finally(() => {
+                         setTimeout(() => {
+                              setIsLoading(false);
+                         }, 2000);
+                    });
+               // setUserInfo(user);
           } catch (error) {
                // Add your own error handler here
           }
      };
 
+     const googleSignIn = () => {
+          setIsLoading(true);
+
+          googleLogin();
+     };
+
      return {
-          userInfo,
+          isLoading,
           googleSignIn,
      };
 }

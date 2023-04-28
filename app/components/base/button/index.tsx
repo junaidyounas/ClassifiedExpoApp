@@ -40,7 +40,7 @@ const BaseButton = (props: Props | any) => {
           >
                <BaseText
                     fontFamily={fonts.medium}
-                    fixColor={textColor}
+                    color={textColor}
                     fontSize={fontSizes.sm}
                >
                     {text}

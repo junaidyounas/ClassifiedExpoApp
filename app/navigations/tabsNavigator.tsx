@@ -20,7 +20,7 @@ export function BottomTabsNavigator() {
                screenOptions={({ route }: { route: { name: string } }) => ({
                     tabBarIcon: ({ focused }: { focused: boolean }) => {
                          switch (route.name) {
-                              case screens.Main:
+                              case screens.TabDashboard:
                                    return (
                                         <AntDesign
                                              name="home"
@@ -80,7 +80,7 @@ export function BottomTabsNavigator() {
                     tabBarShowLabel: false,
                })}
           >
-               <Tab.Screen name={screens.Main} component={DashboardScreen} />
+               <Tab.Screen name={screens.TabDashboard} component={DashboardScreen} />
                <Tab.Screen name={screens.Seach} component={SearchScreen} />
                <Tab.Screen name={screens.Add} component={AddNewAdScreen} />
                <Tab.Screen name={screens.Chat} component={ChatScreen} />

@@ -1,0 +1,43 @@
+{
+  "expo": {
+       "name": "slappfirebase",
+       "slug": "slappfirebase",
+       "version": "1.0.0",
+       "orientation": "portrait",
+       "icon": "./assets/icon.png",
+       "userInterfaceStyle": "light",
+       "splash": {
+            "image": "./assets/splash.png",
+            "resizeMode": "contain",
+            "backgroundColor": "#ffffff"
+       },
+       "jsEngine": "hermes",
+       "assetBundlePatterns": ["**/*"],
+       "ios": {
+            "supportsTablet": true,
+            "jsEngine": "jsc",
+            "infoPlist": {
+                 "CFBundleAllowMixedLocalizations": true,
+                 "ExpoLocalization_supportsRTL": true
+            }
+       },
+       "android": {
+            "adaptiveIcon": {
+                 "foregroundImage": "./assets/adaptive-icon.png",
+                 "backgroundColor": "#ffffff"
+            },
+            "package": "com.kamonline.app"
+       },
+       "web": {
+            "favicon": "./assets/favicon.png"
+       },
+       "extra": {
+            "supportsRTL": true,
+            "eas": {
+                 "projectId": "491b5d62-509c-48bb-ac2f-ca177b1181cb"
+            }
+       },
+       "plugins": ["expo-localization"],
+       "scheme": "yourscheme"
+  }
+}

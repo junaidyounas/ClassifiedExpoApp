@@ -19,19 +19,24 @@ export default {
                "supportsTablet": true,
                "jsEngine": "jsc",
                "infoPlist": {
-                    "CFBundleAllowMixedLocalizations": true
+                    "CFBundleAllowMixedLocalizations": true,
+                    "ExpoLocalization_supportsRTL": true
                }
           },
           "android": {
                "adaptiveIcon": {
                     "foregroundImage": "./assets/adaptive-icon.png",
                     "backgroundColor": "#ffffff"
-               }
+               },
+               "package": "com.kamonline.app"
           },
           "web": {
                "favicon": "./assets/favicon.png"
           },
           "extra": {
+               "eas": {
+                    "projectId": "491b5d62-509c-48bb-ac2f-ca177b1181cb"
+               },
                "supportsRTL": true,
                firebaseApiKey: process.env.FIREBASE_API_KEY,
                firebaseAuthDomain: process.env.FIREBASE_AUTH_DOMAIN,
@@ -40,6 +45,8 @@ export default {
                firebaseMessagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
                firebaseAppId: process.env.FIREBASE_APP_ID
           },
-          "plugins": ["expo-localization"]
+          "plugins": ["expo-localization"],
+          "scheme": "yourscheme"
      }
 }
+

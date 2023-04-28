@@ -5,7 +5,12 @@ import {
      sendEmailVerification,
      signInWithEmailAndPassword,
      updateProfile,
-     signOut
+     signOut,
+     linkWithCredential,
+     AuthCredential,
+     signInWithCredential,
+     signInWithCustomToken,
+     GoogleAuthProvider
 } from "firebase/auth";
 import { screens } from "navigations/constants";
 import { navigate } from "navigations/navRef";
@@ -48,6 +53,23 @@ const loginFirebaseUser = (email: string, password: string) => {
      });
 };
 
+const loginGoogleSignInLinkWithCredientials = (token: string) => {
+     return new Promise<User>((resolve, reject) => {
+          const cred = GoogleAuthProvider.credential(token);
+          signInWithCredential(auth, cred)
+               .then((userCredential) => {
+                    const user = userCredential.user;
+                    console.log("===> ~ file: user.ts:61 ~ .then ~ user:", user);
+                    store.dispatch(setUser(user));
+                    resolve(user);
+               })
+               .catch((error) => {
+                    console.log("===> ~ file: user.ts:65 ~ error:", error);
+                    reject(error);
+               });
+     });
+};
+
 const logoutFirebaseEmail = () => {
      signOut(auth).then(() => {
                     store.dispatch(setUser({}));
@@ -59,4 +81,5 @@ export const firebaseUserService = {
      createFirebaseUser,
      loginFirebaseUser,
      logoutFirebaseEmail,
+     loginGoogleSignInLinkWithCredientials,
 };

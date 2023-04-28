@@ -1,12 +1,19 @@
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { _firebase } from "services/firebase";
 import { setUser } from "store/auth/authSlice";
+import * as WebBrowser from "expo-web-browser";
+import * as Google from "expo-auth-session/providers/google";
+import { firebaseUserService } from "services/firebase/user";
 
+WebBrowser.maybeCompleteAuthSession();
 const auth = getAuth(_firebase);
 
 export function useGoogleAuth() {
+     const [token, setToken] = useState("");
+     const [idToken, setIdToken] = useState("");
+     const [userInfo, setUserInfo] = useState(null);
      const dispatch = useDispatch();
      React.useEffect(() => {
           const unsubscribeFromAuthStatuChanged = onAuthStateChanged(auth, (_user) => {
@@ -21,18 +28,52 @@ export function useGoogleAuth() {
 
                     // })
                     dispatch(setUser(_user));
-
                } else {
                     // User is signed out
-                    dispatch(setUser({}))
-
+                    dispatch(setUser({}));
                }
           });
 
           return unsubscribeFromAuthStatuChanged;
      }, []);
 
+     const [request, response, googleSignIn] = Google.useAuthRequest({
+          androidClientId:
+               "894309389953-qo12s6r9e6l1nsdv6a5lupsb1o3edrba.apps.googleusercontent.com",
+          expoClientId:
+               "894309389953-qo12s6r9e6l1nsdv6a5lupsb1o3edrba.apps.googleusercontent.com",
+
+          //    iosClientId: "GOOGLE_GUID.apps.googleusercontent.com",
+     });
+
+     React.useEffect(() => {
+          if (response?.type === "success") {
+               setToken(response.authentication.accessToken);
+               setIdToken(response.authentication?.idToken);
+               getUserInfo();
+          }
+     }, [response, token]);
+
+     const getUserInfo = async () => {
+          try {
+               const response = await fetch("https://www.googleapis.com/userinfo/v2/me", {
+                    headers: { Authorization: `Bearer ${token}` },
+               });
+
+               const user = await response.json();
+               console.log(
+                    "===> ~ file: useGoogleAuth.ts:64 ~ getUserInfo ~ user:",
+                    user
+               );
+               firebaseUserService.loginGoogleSignInLinkWithCredientials(idToken);
+               setUserInfo(user);
+          } catch (error) {
+               // Add your own error handler here
+          }
+     };
+
      return {
-          
+          userInfo,
+          googleSignIn,
      };
 }

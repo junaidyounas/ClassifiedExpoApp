@@ -6,6 +6,7 @@ import { setUser } from "store/auth/authSlice";
 import * as WebBrowser from "expo-web-browser";
 import * as Google from "expo-auth-session/providers/google";
 import { firebaseUserService } from "services/firebase/user";
+import Constants from "expo-constants";
 
 WebBrowser.maybeCompleteAuthSession();
 const auth = getAuth(_firebase);
@@ -38,10 +39,8 @@ export function useGoogleAuth() {
      }, []);
 
      const [request, response, googleSignIn] = Google.useAuthRequest({
-          androidClientId:
-               "894309389953-qo12s6r9e6l1nsdv6a5lupsb1o3edrba.apps.googleusercontent.com",
-          expoClientId:
-               "894309389953-qo12s6r9e6l1nsdv6a5lupsb1o3edrba.apps.googleusercontent.com",
+          androidClientId: Constants.manifest?.extra?.googleWebClientId,
+          expoClientId: Constants.manifest?.extra?.googleWebClientId,
 
           //    iosClientId: "GOOGLE_GUID.apps.googleusercontent.com",
      });

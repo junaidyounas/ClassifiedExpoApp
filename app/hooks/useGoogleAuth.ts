@@ -7,6 +7,20 @@ import * as WebBrowser from "expo-web-browser";
 import * as Google from "expo-auth-session/providers/google";
 import { firebaseUserService } from "services/firebase/user";
 import Constants from "expo-constants";
+import {
+     User,
+     createUserWithEmailAndPassword,
+     sendEmailVerification,
+     signInWithEmailAndPassword,
+     updateProfile,
+     signOut,
+     linkWithCredential,
+     AuthCredential,
+     signInWithCredential,
+     signInWithCustomToken,
+     GoogleAuthProvider,
+} from "firebase/auth";
+import { store } from "store/store";
 
 WebBrowser.maybeCompleteAuthSession();
 const auth = getAuth(_firebase);
@@ -38,7 +52,7 @@ export function useGoogleAuth() {
           return unsubscribeFromAuthStatuChanged;
      }, []);
 
-     const [request, response, googleLogin] = Google.useAuthRequest({
+     const [request, response, googleLogin]: any = Google.useAuthRequest({
           androidClientId: Constants.manifest?.extra?.googleWebClientId,
           expoClientId: Constants.manifest?.extra?.googleWebClientId,
 
@@ -66,12 +80,16 @@ export function useGoogleAuth() {
                //      "===> ~ file: useGoogleAuth.ts:64 ~ getUserInfo ~ user:",
                //      user
                // );
-               firebaseUserService
-                    .loginGoogleSignInLinkWithCredientials(idToken)
-                    .finally(() => {
-                         setTimeout(() => {
-                              setIsLoading(false);
-                         }, 2000);
+               const cred = GoogleAuthProvider.credential(idToken);
+               signInWithCredential(auth, cred)
+                    .then((userCredential) => {
+                         const user = userCredential.user;
+                         store.dispatch(setUser(user));
+                    })
+                    .catch((error) => {
+                         console.log("===> ~ file: user.ts:65 ~ error:", error);
+                    }).finally(() => {
+                         setIsLoading(false);
                     });
                // setUserInfo(user);
           } catch (error) {
@@ -81,7 +99,6 @@ export function useGoogleAuth() {
 
      const googleSignIn = () => {
           setIsLoading(true);
-
           googleLogin();
      };
 

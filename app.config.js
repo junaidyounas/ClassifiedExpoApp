@@ -47,7 +47,7 @@ export default {
                googleWebClientId: process.env.GOOGLE_WEB_CLIENT
           },
           "plugins": ["expo-localization"],
-          "scheme": "yourscheme"
+          "scheme": ["yourscheme", "fb1234567890"]
      }
 }
 

@@ -5,6 +5,7 @@ import BaseButton from "components/base/button";
 import BaseText from "components/base/text";
 import BaseView from "components/base/view";
 import EmailSignInComponent from "components/ui/emailSignin";
+import { useFacebookAuth } from "hooks/useFacebookAuth";
 import { useGoogleAuth } from "hooks/useGoogleAuth";
 import { ln } from "i18n";
 import { Spinner } from "native-base";
@@ -19,6 +20,7 @@ type Props = {};
 
 const LoginScreen = (props: Props) => {
      const { isLoading, googleSignIn } = useGoogleAuth();
+     const {isFacebookLoading,facebookSignIn} = useFacebookAuth();
      const LeftFacebookIcon = (
           <MaterialCommunityIcons
                name={"facebook"}
@@ -45,7 +47,7 @@ const LoginScreen = (props: Props) => {
      );
      return (
           <BaseView style={styles.container}>
-               {isLoading ? <BaseSpinner /> : null}
+               {isLoading || isFacebookLoading ? <BaseSpinner /> : null}
                <BaseView width={widthRatio(86)}>
                     <BaseText fontFamily={fonts.semiBold} fontSize={33} bold>
                          {ln("welcomeback")}
@@ -56,6 +58,7 @@ const LoginScreen = (props: Props) => {
                          leftIcon={LeftFacebookIcon}
                          text={ln("continuewithfacebook")}
                          marginTop={4}
+                         onPress={facebookSignIn}
                     />
                     <BaseButton
                          leftIcon={LeftAppleIcon}

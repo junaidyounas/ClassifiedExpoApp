@@ -21,7 +21,7 @@ const GridItemDetailView = (props: Props) => {
                     <BaseText
                          width={widthRatio(35)}
                          fontFamily={fonts.semiBold}
-                         fontSize={fontSizes["2xs"]}
+                         fontSize={9}
                     >
                          3d rendering beautiful luxury...
                     </BaseText>
@@ -32,7 +32,7 @@ const GridItemDetailView = (props: Props) => {
                     <VerifiedBadge />
                     <BaseText
                          fontFamily={fonts.semiBold}
-                         fontSize={fontSizes["2xs"]}
+                         fontSize={9}
                          fixColor={colors.charcol}
                     >
                          40 mins ago

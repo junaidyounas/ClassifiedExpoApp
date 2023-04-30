@@ -13,7 +13,7 @@ const PriceTag = (props: Props | any) => {
   return (
        <BaseView style={styles.container}>
             <BaseText
-                 fontSize={11}
+                 fontSize={10}
                  fontFamily={fonts.semiBold}
                  color={colors.coral}
                  {...props}

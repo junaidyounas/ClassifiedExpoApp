@@ -5,17 +5,18 @@ import { colors } from 'theme/colors'
 import { widthRatio } from 'utils/pixelRatio'
 import BaseText from 'components/base/text'
 import { Ionicons } from "@expo/vector-icons";
+import { textRatio } from 'utils/textRatio'
 
 type Props = {
      paddingHorizontal?: number
 };
 
 const LocationTag = (props: Props | any) => {
-  const { paddingHorizontal } =props;
+  const { paddingHorizontal=2 } =props;
   return (
        <BaseView style={[styles.container, { paddingHorizontal }]} {...props}>
-            <Ionicons name="location" size={15} color={colors.jungleGreen} />
-            <BaseText ml={0.5}>Silicon Valley</BaseText>
+            <Ionicons name="location" size={textRatio(13)} color={colors.jungleGreen} />
+            <BaseText fontSize={8} ml={0.5}>Silicon Valley</BaseText>
        </BaseView>
   );
 }

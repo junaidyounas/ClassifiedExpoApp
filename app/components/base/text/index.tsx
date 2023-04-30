@@ -2,6 +2,7 @@ import { StyleSheet } from "react-native";
 import React from "react";
 import { Text } from "native-base";
 import { colors } from "theme/colors";
+import { textRatio } from "utils/textRatio";
 
 type Props = {
      children: string | JSX.Element | JSX.Element[];
@@ -17,7 +18,7 @@ const BaseText = (props: Props | any) => {
      const {
           fontFamily = "regular",
           color = colors.jet,
-          fontSize = 12,
+          fontSize = 11,
           bold = false,
           fixColor,
      } = props;
@@ -26,7 +27,7 @@ const BaseText = (props: Props | any) => {
                {...props}
                // _light={{ color: fixColor ? fixColor : colors.richBlack }}
                // _dark={{ color: fixColor ? fixColor : colors.white }}
-               fontSize={fontSize}
+               fontSize={textRatio(fontSize)}
                color={color}
                fontFamily={fontFamily}
           >

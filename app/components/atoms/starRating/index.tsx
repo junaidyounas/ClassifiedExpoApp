@@ -18,7 +18,7 @@ const StarRating = (props: Props) => {
                     ratingColor={colors.mustard}
                     ratingBackgroundColor={colors.platinum}
                     ratingCount={5}
-                    imageSize={13}
+                    imageSize={12}
                     readonly
                     style={{ paddingVertical: widthRatio(1) }}
                />

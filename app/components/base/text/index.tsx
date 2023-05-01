@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform } from "react-native";
 import React from "react";
 import { Text } from "native-base";
 import { colors } from "theme/colors";
@@ -27,7 +27,7 @@ const BaseText = (props: Props | any) => {
                {...props}
                // _light={{ color: fixColor ? fixColor : colors.richBlack }}
                // _dark={{ color: fixColor ? fixColor : colors.white }}
-               fontSize={textRatio(fontSize)}
+               fontSize={Platform.OS == 'web' ? fontSize : textRatio(fontSize)}
                color={color}
                fontFamily={fontFamily}
           >

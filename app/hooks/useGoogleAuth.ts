@@ -41,6 +41,7 @@ export function useGoogleAuth() {
      const [request, response, googleLogin]: any = Google.useAuthRequest({
           androidClientId: Constants.manifest?.extra?.googleWebClientId,
           expoClientId: Constants.manifest?.extra?.googleWebClientId,
+          webClientId: Constants.manifest?.extra?.googleWebClientId,
 
           //    iosClientId: "GOOGLE_GUID.apps.googleusercontent.com",
      });

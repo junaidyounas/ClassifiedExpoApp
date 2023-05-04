@@ -1,0 +1,34 @@
+{
+  "project_info": {
+    "project_number": "159781771690",
+    "project_id": "slapp-2163b",
+    "storage_bucket": "slapp-2163b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:159781771690:android:15a3c963bea484f096b3d3",
+        "android_client_info": {
+          "package_name": "com.kamonline.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByE9jimGMPcMjosaC1AHKyzuU3yT1FoN0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "159781771690-5vkj6173j5l5puc2bumvrf5f84b41saq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

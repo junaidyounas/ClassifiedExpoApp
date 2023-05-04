@@ -28,7 +28,8 @@ export default {
                     "foregroundImage": "./assets/adaptive-icon.png",
                     "backgroundColor": "#ffffff"
                },
-               "package": "com.kamonline.app"
+               "package": "com.kamonline.app",
+               "googleServicesFile": "./google-services.json"
           },
           "web": {
                "favicon": "./assets/favicon.png"
@@ -46,7 +47,7 @@ export default {
                firebaseAppId: process.env.FIREBASE_APP_ID,
                googleWebClientId: process.env.GOOGLE_WEB_CLIENT
           },
-          "plugins": ["expo-localization"],
+          "plugins": ["expo-localization", "@react-native-firebase/app"],
           "scheme": ["yourscheme", "fb1234567890"]
      }
 }

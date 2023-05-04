@@ -11,6 +11,7 @@ import { ln } from "i18n";
 import { Spinner } from "native-base";
 import React, { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
+import { firebaseUserService } from "services/firebase/user";
 import { colors } from "theme/colors";
 import { fonts } from "theme/fontNames";
 import { fontSizes } from "theme/fontSizes";
@@ -73,6 +74,16 @@ const LoginScreen = (props: Props) => {
                          textColor={colors.white}
                          marginTop={2}
                          onPress={googleSignIn}
+                    />
+                    <BaseButton
+                         leftIcon={LeftGoogleIcon}
+                         text={ln("continuewithgoogle")}
+                         backgroundColor={colors.red}
+                         textColor={colors.white}
+                         marginTop={2}
+                         onPress={() =>{
+                              firebaseUserService.firestoreUserUpdate();
+                         }}
                     />
                     <CreateOneAccountText marginTop={4} />
                </BaseView>

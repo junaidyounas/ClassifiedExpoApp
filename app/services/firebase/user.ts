@@ -14,9 +14,10 @@ import {
 } from "firebase/auth";
 import { screens } from "navigations/constants";
 import { navigate } from "navigations/navRef";
-import { _firebase } from "./";
+import { _firebase, _firestore } from "./";
 import { store } from "store/store";
 import { setUser } from "store/auth/authSlice";
+import  firestore  from '@react-native-firebase/firestore';
 
 export const auth = getAuth(_firebase);
 const createFirebaseUser = (email: string, name: string, password: string) => {
@@ -25,9 +26,21 @@ const createFirebaseUser = (email: string, name: string, password: string) => {
           createUserWithEmailAndPassword(auth, email, password)
                .then((userCredential) => {
                     const user = userCredential.user;
-                    updateProfile(user, {
-                         displayName: name,
-                    });
+                    firestore()
+                         .collection("users")
+                         .doc(user.uid)
+                        .set({
+                              name,
+                              email,
+                        })
+                         .then((res) => {
+                              resolve(res);
+                              console.log("User added!", res);
+                         })
+                         .catch((err) => {
+                              reject(err);
+                              console.log("===> ~ file: user.ts:46 ~ .then ~ err:", err);
+                         });
                     sendEmailVerification(user);
                     resolve(user);
                     // simpleToastShow("Account created successfully.")
@@ -39,11 +52,38 @@ const createFirebaseUser = (email: string, name: string, password: string) => {
      });
 };
 
+const firestoreUserUpdate = () => {
+     return new Promise((resolve, reject) => {
+           firestore()
+                .collection("users")
+                .add({
+                     name: "Ada Lovelace",
+                     age: 30,
+                })
+                .then((res) => {
+                     resolve(res);
+                     console.log("User added!", res);
+                })
+                .catch((err) => {
+                     reject(err);
+                     console.log("===> ~ file: user.ts:46 ~ .then ~ err:", err);
+                });
+     });
+};
+
+
+
 const loginFirebaseUser = (email: string, password: string) => {
      return new Promise<User>((resolve, reject) => {
           signInWithEmailAndPassword(auth, email, password)
                .then((userCredential) => {
                     const user = userCredential.user;
+                    firestore()
+                         .collection("users")
+                         .doc(user.uid)
+                         .update({
+                              isEmailVerified: user.emailVerified,
+                         });
                     store.dispatch(setUser(user));
                     resolve(user);
                })
@@ -81,4 +121,5 @@ export const firebaseUserService = {
      loginFirebaseUser,
      logoutFirebaseEmail,
      loginGoogleSignInLinkWithCredientials,
+     firestoreUserUpdate,
 };

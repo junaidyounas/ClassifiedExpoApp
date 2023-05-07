@@ -75,16 +75,6 @@ const LoginScreen = (props: Props) => {
                          marginTop={2}
                          onPress={googleSignIn}
                     />
-                    <BaseButton
-                         leftIcon={LeftGoogleIcon}
-                         text={ln("continuewithgoogle")}
-                         backgroundColor={colors.red}
-                         textColor={colors.white}
-                         marginTop={2}
-                         onPress={() =>{
-                              firebaseUserService.firestoreUserUpdate();
-                         }}
-                    />
                     <CreateOneAccountText marginTop={4} />
                </BaseView>
           </BaseView>

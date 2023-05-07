@@ -4,7 +4,7 @@ import BaseInput from "components/base/input";
 import { KeyboardType } from "enum/KeyboardType";
 import { ln } from "i18n";
 import { Pressable, View } from "native-base";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, Fragment, useEffect } from "react";
 import { StyleSheet } from "react-native";
 import { colors } from "theme/colors";
 import { fontSizes } from "theme/fontSizes";
@@ -12,6 +12,8 @@ import * as Yup from "yup";
 import { Formik } from "formik";
 import { firebaseUserService } from "services/firebase/user";
 import useToastShow from "hooks/useToastShow";
+import BaseDropdown from "components/base/dropdown";
+import { LogBox } from "react-native";
 
 const SignupFormSchema = Yup.object({
      email: Yup.string()
@@ -28,16 +30,21 @@ const EmailSignupComponent = (props: Props) => {
      const formikRef = useRef<any>();
      const { successToast, errorToast, generalToast } = useToastShow();
 
+     
 
      function onSignupSubmit(email: string, name: string, password: string) {
           setIsLoading(true);
-          firebaseUserService.createFirebaseUser(email, name, password).then(() => {
-               successToast(ln("accountcreated"));
-          }).catch(() => {
-               errorToast(ln("tryagain"));
-          }).finally(() => {
-               setIsLoading(false);
-          });
+          firebaseUserService
+               .createFirebaseUser(email, name, password)
+               .then(() => {
+                    successToast(ln("accountcreated"));
+               })
+               .catch(() => {
+                    errorToast(ln("tryagain"));
+               })
+               .finally(() => {
+                    setIsLoading(false);
+               });
      }
 
      const onLoginButtonPress = () => {
@@ -118,6 +125,8 @@ const EmailSignupComponent = (props: Props) => {
                               InputRightElement={RightElementPassword}
                               placeHolder={ln("enterpassword")}
                          />
+                         
+
                          <BaseButton
                               isLoading={isLoading}
                               onPressIn={onLoginButtonPress}

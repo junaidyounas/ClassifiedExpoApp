@@ -24,5 +24,8 @@
      "loggedinsuccess": "Logged in successfully",
      "accountcreated": "Account created successfully",
      "tryagain": "Try again later",
-     "emailnotverified": "Email not verified, please verify your email address"
+     "emailnotverified": "Email not verified, please verify your email address",
+     "country": "Country",
+     "state": "State",
+     "city": "City"
 }
